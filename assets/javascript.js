@@ -7,7 +7,7 @@ var userChoice = [];
 
 
 var winstext = document.getElementById("wins-text");
-var losestext = document.getElementById("loses-text");
+var losestext = document.getElementById("losses-text");
 var userChoicetext = document.getElementById("userChoice-text");
 var guesslefttext = document.getElementById("guessleft-text");
 var userGuesstext = document.getElementById("userGuess");
@@ -28,19 +28,19 @@ document.onkeyup = function (event) {
         userChoice = [];
         
       
-    } else {
-        guessleft--
-        userChoice.push(userGuess)
+    } else  {
+        guessleft--;
+        userChoice.push(userGuess);
 
     }
     if (guessleft === 0) {
-        loses++
+        losses++;
         guessleft = 9;
         userChoice = [];
     }
 
     winstext.textContent = "Wins: " + wins;
-    losestext.textContent = "Loses: " + loses;
+    lossestext.textContent = "Losses: " + losses;
     guesslefttext.textContent = "Guess Left: " + guessleft;
     userChoicetext.textContent = "Your Guess: " + userChoice.join(", ");
     console.log(computerGuess);
