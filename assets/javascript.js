@@ -3,7 +3,7 @@ var computerChoice = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'
 var wins = 0;
 var losses = 0;
 var guessleft = 9;
-var userChoice = []; 
+var userChoice = [];
 
 
 var winstext = document.getElementById("wins-text");
@@ -18,22 +18,25 @@ var computerGuess;
 
 document.onkeyup = function (event) {
 
-    if (guessleft === 9){
+    if (guessleft === 9) {
         computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
     }
     var userGuess = event.key;
     userGuess = userGuess.toLowerCase()
 
+
+    if (guessleft === 9) {
+        computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+    }
+  
+    if (computerChoice.includes(userGuess) && !userChoice.includes(userGuess)) {
         
-        if (guessleft === 9){
-            computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-        }
-    
+   
     if (userGuess === computerGuess) {
         wins++;
         guessleft = 9;
         userChoice = [];
-    } else  {
+    } else {
         guessleft--;
         userChoice.push(userGuess);
 
@@ -49,6 +52,7 @@ document.onkeyup = function (event) {
     guesslefttext.textContent = "Guess Left: " + guessleft;
     userChoicetext.textContent = "Your Guess: " + userChoice.join(", ");
     console.log(computerGuess);
-
+        }
+        else { alert("Please pick a different letter")}
 };
 
