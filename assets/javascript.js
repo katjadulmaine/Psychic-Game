@@ -29,26 +29,31 @@ document.onkeyup = function (event) {
             computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
         }
     
-    if (userGuess === computerGuess) {
+    if (computerChoice.includes(userGuess) && !userChoice.includes(userGuess)) {
+        
+        if (userGuess === computerGuess) {
         wins++;
         guessleft = 9;
         userChoice = [];
-    } else  {
+        } 
+        else  {
         guessleft--;
         userChoice.push(userGuess);
-
-    }
-    if (guessleft === 0) {
+        }
+        if (guessleft === 0) {
         losses++;
         guessleft = 9;
         userChoice = [];
+        }
+
+        winstext.textContent = "Wins: " + wins;
+        lossestext.textContent = "Losses: " + losses;
+        guesslefttext.textContent = "Guess Left: " + guessleft;
+        userChoicetext.textContent = "Your Guess: " + userChoice.join(", ");
+        console.log(computerGuess);
     }
-
-    winstext.textContent = "Wins: " + wins;
-    lossestext.textContent = "Losses: " + losses;
-    guesslefttext.textContent = "Guess Left: " + guessleft;
-    userChoicetext.textContent = "Your Guess: " + userChoice.join(", ");
-    console.log(computerGuess);
-
+    else { 
+        alert("Please pick a different letter")
+    }
 };
 
